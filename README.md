@@ -8,4 +8,4 @@ I decided to make my blog and chrome extension for putting all together into onl
 
 ## Screenshot
 
-![Screenshot](https://media.giphy.com/media/PoEDZWhMEYIzpHVczJ/giphy.gif)
+![Screenshot](https://media.giphy.com/media/ckFKm5nO2Hy5dPXuo4/giphy.gif)
