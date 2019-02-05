@@ -28,14 +28,9 @@ let quill = new Quill('#editor', {
 });
 
 submit.addEventListener('click', () => {
-  const url = window.location.href;
-  document.querySelector('#url').value = url;
-
   const title = document.querySelector('#title').value;
-  const description = quill.container.firstChild.innerHTML;
-
-  const items = JSON.parse(localStorage.getItem('items')) || [];
-  const token = items.token;
+  const token_obj = JSON.parse(localStorage.getItem('jspark_token')) || {};
+  const token = token_obj.token;
 
   if(!token) {
     alert("Token does not exist!");
@@ -43,15 +38,17 @@ submit.addEventListener('click', () => {
   }
 
   const data = JSON.stringify({
-    title: title,
-    content: description,
-    token: token
+    title,
+    token,
+    content: JSON.stringify(quill.getContents()),
+    category_name: document.querySelector('#category_name').value || 'None'
   });
 
   var xhr = new XMLHttpRequest();
   xhr.addEventListener("readystatechange", function () {
     if (this.readyState === 4) {
       console.log(this.responseText);
+      window.close();
     }
   });
 
